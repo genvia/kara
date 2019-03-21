@@ -1,0 +1,50 @@
+Dataset要加上从数据库和cvs读取的功能
+定制大接口的executor用string模块的template来处理
+变量文件中的变量并不在每次引用时都变化，只在第一次变化
+
+bug:
+kara中日志中的时间是错的
+
+----: 加入日志功能
+done: Database类加入执行sql文件的功能
+done: kara每次在import时都会生成一个唯一的ID，后面在robot framework里用它来唯一关联到kara的日志
+done: 给Database类加入事务功能
+done: kara初始化在import时连上所有数据库，系统退出时关闭所有数据库
+done：完成database/util下的功能
+done: 将ofrg的callback用Mock改一下，要不老是失败
+done: 所有validator全部都是单例，并且用装饰器将它们的实例放入kara顶层包中的一个列表中
+done: executor的payload如果是传入的，就不从文件中读，因为有的http接口参数很少象充值中心取单
+done: kara-home环境变量，其下三个子目录：conf, params, logs
+done: executor要加上最常，最小的检验:
+    status code都是200
+    返回的信息里要正确：
+        大接口xml里的errcode，S单号不为空
+        充值中心取单：message是操作正确，count大于0
+        充值中心回调：text是success
+done: executor的raw里要放上最常用的值：
+    大接口：billid, oflindid
+    充值中心取单：取完后得到的sorderid, supuid这个元组的列表
+    充值中心回调：无
+done: validator中加入batch_verify功能，所有的validator集中处理，全部登记在kara的validator列表中
+done: 将validator的register装饰器改下，只能登记一次，不能重复
+
+日记：
+16年9月，花了大约两个完整的人天完成kara整体的结构和初步的executor
+16年10月18号上班全天，完成opa和ofrg的executor，在之前的基础上改的更好，也基本定型
+16年10月19号上班全天，完成validator，完成了xpath和substring的validator
+16年10月23号上班全天，23号两个周未，完成了数据库相关的sqlhelper和record。初步可以写rfs的library，联调了
+16年10月25号下午和加班，对kara结构进行了大的调整
+16年10月26号加班，改进sqlbuilder，使前面使用更方便，修正所有的单元测试。
+16年11月04号上午，加入自动连接和关闭数据库的功能
+16年11月14号上午，加入执行sql文件的功能
+16年11月15号上午，加入事务的功能
+16年12月19号下午，加入帐务下单失败的用例
+16年12月20号上午，加入帐务复杂的两个下单验证用例
+16年12月20号，花了6个小时，把帐务相关的代码和用例实例调好
+
+17年9月5号，再次回顾，准备开始充值中心的用例，开始先写卡密
+
+Q:
+robot里的for不能用${list}形式，只能用@{list}形式。为什么？
+
+

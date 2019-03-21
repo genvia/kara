@@ -1,0 +1,7 @@
+--variable GLOBAL_DELAY:2s
+--loglevel DEBUG:DEBUG
+--outputdir /tmp
+--console dotted
+--prerunmodifier kararfsclient.TransactionCheck
+--listener kararfsclient.KaraSetIdListener
+
