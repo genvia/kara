@@ -1,7 +1,0 @@
-{
-  "name": "kara",
-  "description": "automatic test framework based robot frammework and python, created by genvia",
-  "version": "0.1.0",
-  "dependencies": {},
-  "devDependencies": {}
-}
