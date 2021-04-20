@@ -3,7 +3,7 @@ cx-Oracle==5.2.1
 httmock==1.2.5
 logbook==1.0.0
 lxml==3.6.4
-py==1.4.31
+py==1.10.0
 pytest==3.2.1
 requests==2.11.1
 SQLAlchemy==1.0.14
